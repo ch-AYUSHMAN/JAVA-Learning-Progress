@@ -359,7 +359,7 @@ obj2.print();
         PairData <Integer , Double > c = new PairData<>(88,33.3);
         c.printData();  
     } 
- }
+ }*/
 // --> Generic Class With Method Overloading
  class Student {
     String name;                       // Name of the Student 
@@ -387,19 +387,20 @@ obj2.print();
         return b[i];
       } 
       //Overloading methods in the generic class
-      void printData (T t){
+      void printDataT (T[] t){
         for ( int i = 0; i <t.length ;i ++)
-        System.out.print(t.getData(i) + " ");
+        System.out.print(t[i] + " ");
         System.out.println();
       }
-      void printData (S s){
+      void printDataS (S[] s){
         for (int i = 0 ; i < s.length ; i++)
-        s[i].printStudent();
+        if (s[i] instanceof Student)
+                ((Student) s[i]).printStudent();
         System.out.println();
         
       }
       // Few additional methods
-  void reverseArray(T t) {    //Generic method to reverse the order of elements in t
+  void reverseArrayT(T [] t) {    //Generic method to reverse the order of elements in t
  int front = 0, rear = t.length-1; T temp;
  while( front < rear) {
  temp = t[rear];
@@ -408,10 +409,10 @@ obj2.print();
  front++; rear--;
  }
  }
- void reverseArray(S s){    //Generic method to reverse the order of elements in s
+ void reverseArrayS(S [] s){    //Generic method to reverse the order of elements in s
  int front = 0, rear = s.length-1; S temp;
  while( front < rear) {
- temp = s[rear]
+ temp = s[rear];
  s[rear] =s[front];
  s[front]= temp;
  front++; rear--;
@@ -421,35 +422,35 @@ obj2.print();
  // End of the definition of class GenericMultiArrays
 public class GenericMethod {
 public static void main(String[] args) {
-    String t[]= {“A”, “B”, “C”};
+    String t[]= {"A", "B", "C"};
  // It is an array of String data
  //Creating an array of Students’ data
- Student s[3];
+ Student s[]  = new Student[3];
  // It is an array of String data
- s[0] = new Student(“Ram”, 86, 66, 96);
- s[1] = new Student(“Rahim”, 88, 99, 77);
- s[2] = new Student(“John”, 75, 85, 95);
+ s[0] = new Student("Ramesh", new int[]{ 86, 66, 96});
+ s[1] = new Student("Rahul",new int[] {88, 99, 77});
+ s[2] = new Student("Roads", new int[] {75, 85, 95});
  // Store the data into generic arrays
- GenericArrays<String, Student> arrayData = new GenericArrays<String,
- Student>(t, s);
+ GenericMultiArrays<String, Student> arrayData = new GenericMultiArrays<String, Student>(t, s);
+
  // Printing the data ...
- arrayData.printData(t);
+ arrayData.printDataT(t);
  //Reverse ordering of data ...
- arrayData.reverseArray(t);
+ arrayData.reverseArrayT(t);
  // Printing the data ...
- arrayData.printData(s);
+ arrayData.printDataS(s);
  //Reverse ordering of data ...
- arrayData.reverseArray(s);
+ arrayData.reverseArrayS(s);
  // Printing the array of strings
  // Printing the student’s data
  // Printing the data after reverse ordering ...
- arrayData.printData(t);
+ arrayData.printDataT(t);
  // Printing the array of strings
- arrayData.printData(s);
+ arrayData.printDataS(s);
  }
  // Printing the array of students
 
-}
+}/* 
     // --> Bounded Argument Genric Class /* 
  class GenericBound <T extends Number > {
     T [ ] array;
