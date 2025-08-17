@@ -13,7 +13,7 @@ public class IPLticket {
             user2.join();
             user3.join();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
         System.out.println("Available tickets: "+ ticketBookingSystem.getAvailableTickets());

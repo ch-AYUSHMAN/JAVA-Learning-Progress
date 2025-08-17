@@ -24,7 +24,7 @@ public class StringManipulation {
     }
     // input : A10B12C3D4
     // OUTPUT : AAAAAAAAAAABBBBBBBBBBBBCCCDDDD
-    public static void main ( String [] args ) {
+    public static void main1 ( String [] args ) {
         Scanner in = new Scanner ( System.in) ;
         System.out.print( "Enter the String : ");
         String s = in.next();
@@ -48,3 +48,4 @@ public class StringManipulation {
             System.out.print( ch);
         }
     }
+}

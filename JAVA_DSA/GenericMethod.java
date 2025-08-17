@@ -450,34 +450,8 @@ public static void main(String[] args) {
  }
  // Printing the array of students
 
-}/* 
-    // --> Bounded Argument Genric Class /* 
- class GenericBound <T extends Number > {
-    T [ ] array;
-    GenericBound (T[] t){
-        array =  t ;
-    }
-    double average(){
-        double sum = 0.0;
-        for (int i = 0 ; i < array.length ;i++)
-        sum += array[i].doubleValue();
-        return sum/ array.length;
-    }
- } 
- public class GenericMethod {
- 
-    public static void main(String[] args) {
-        Integer intArray[]= {1,2,3,4,5,};
-        GenericBound <Integer> intData = new GenericBound<>(intArray);
-        double avgInt = intData.average();
-        System.out.println("Average is " + avgInt);
-        Double doubleArray[] = {1.1,2.2,3.3,4.4,5.5};
-        GenericBound <Double> dblData = new GenericBound <>(doubleArray);
-        double avgDouble = dblData.average();
-        System.out.println ("Average is " + avgDouble);
-
-    }
- }    */         
+} 
+   
 
 
 
