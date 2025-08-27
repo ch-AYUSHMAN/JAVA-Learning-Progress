@@ -1,14 +1,55 @@
 package JAVA_DSA;
-/*The objective of this example is to illustrate how different
- methods can be defined with different bounder wildcard
- arguments.
- A program is given which consists of the following parts.
- 1. Definition of all the classes as shown in the figure.
- 2. Declaration of the generic class, which can be used to store 
-different lists of animals.
- 3. Definitions of different methods to handle objects of 
-different classes in the class hierarchy.
- 4. Driver class to manipulate the objects of different types. */
+/*  
+============================================================
+   Example 5.5 - Bounded Wildcards in Java Generics
+============================================================
+
+The objective of this example is to illustrate how different
+methods can be defined with different bounded wildcard
+arguments.
+
+A program is given which consists of the following parts:
+1. Definition of all the classes as shown in the figure.
+2. Declaration of the generic class, which can be used to store 
+   different lists of animals.
+3. Definitions of different methods to handle objects of 
+   different classes in the class hierarchy.
+4. Driver class to manipulate the objects of different types.
+
+
+--------------------- CLASS HIERARCHY ----------------------
+
+                  ┌──────────────────────────┐
+                  │         Animal           │
+                  │  - long lifespan         │
+                  │  - float weight          │
+                  │  + print()               │
+                  └───────────▲──────────────┘
+                              │
+        ┌─────────────────────┴──────────────────────┐
+        │                                            │
+┌───────────────┐                          ┌────────────────┐
+│    Aquatic    │                          │     Land       │
+│ - boolean scale│                          │ - short vision │
+│ + print()      │                          └───────▲───────┘
+└────────────────┘                                  │
+                                                   │
+                      ┌────────────────────────────┴────────────┐
+                      │                                         │
+              ┌───────────────┐                       ┌────────────────┐
+              │      Pet       │                       │      Wild       │
+              │ - String name  │                       │ - float speed   │
+              └────────────────┘                       └────────────────┘
+
+
+------------------------------------------------------------
+This hierarchy is used to demonstrate:
+- Unbounded wildcards (<?>)
+- Upper bounded wildcards (? extends ...)
+- Lower bounded wildcards (? super ...)
+============================================================
+*/
+
 
 
 
