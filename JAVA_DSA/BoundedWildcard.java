@@ -56,49 +56,70 @@ This hierarchy is used to demonstrate:
 public class BoundedWildcard { 
     public static void main (String args[]){
         // Create a list of unknown animals of class Animal
-        Animal unknown = new Animal(40, 720);
+        Animal unknown = new Animal("Unknown",40, 720);
         Animal u[] = {unknown};
         AnimalWorld <Animal> uList = new AnimalWorld<>(u);
         //Create a list of aquatic animals
-        Aquatic whale = new Aquatic(90, 150000, false);
-        Aquatic shark = new Aquatic(400, 2150, false);
+        Aquatic whale = new Aquatic("Whale", 90, 150000, false);
+        Aquatic shark = new Aquatic("Shark",400, 2150, false);
         Aquatic q [] = { whale , shark};
         AnimalWorld <Aquatic> qList =  new AnimalWorld<Aquatic>( q);
         // Create a list of land animals
-        Land owl = new Land(3, 1, (short) 0);
+        Land owl = new Land("Owl",3, 1, (short) 0);
         Land l  [] = { owl };
         AnimalWorld <Land> lList = new AnimalWorld<Land>(l);
         // Create a list of pet animals
-        Pet dog = new Pet(12, 52, (short) 2, "Tusky");
+        Pet dog = new Pet("Dog",12, 52, (short) 2, "Tusky");
         Pet p [] = { dog };
         AnimalWorld <Pet> pList = new AnimalWorld<Pet>(p);
         // Create a list of wild animals
-        Wild cheetah = new Wild(15, 75, (short)4, 125);
-        Wild  deer = new Wild(10, 48, (short) 1, 86);
+        Wild cheetah = new Wild("Cheetah",15, 75, (short)4, 125);
+        Wild  deer = new Wild("Deer",10, 48, (short) 1, 86);
         Wild w [] = { cheetah , deer };
         AnimalWorld<Wild> wList = new AnimalWorld<Wild>(w);
-        //
+        InnerBoundedWildcard.vitality (uList);
+        InnerBoundedWildcard.vitality (qList);
+        InnerBoundedWildcard.vitality (lList);
+        InnerBoundedWildcard.vitality(wList);
+        InnerBoundedWildcard.vitality(pList);
+
+        InnerBoundedWildcard.showSea(uList);
+        InnerBoundedWildcard.showSea(qList);
+       // InnerBoundedWildcard.showSea(lList);
+        // InnerBoundedWildcard.showSea(pList);
+
+        //InnerBoundedWildcard.showLand(uList);
+        InnerBoundedWildcard.showLand(wList);
         InnerBoundedWildcard.showLand(lList);
+        InnerBoundedWildcard.showLand(pList);
+        //InnerBoundedWildcard.showLand(qList);
+        InnerBoundedWildcard.showPet(pList);
+        //InnerBoundedWildcard.showPet(wList);
+        InnerBoundedWildcard.showWild(wList);
+       // InnerBoundedWildcard.showWild(pList);
 
 
     }
 }
 class Animal {
+    String species ;
     long lifespan;
     float weight;
-    Animal(long years , float kg){
+    Animal(String species,long years , float kg){
+        this.species= species;
         lifespan = years;
         weight = kg;
     }
     public void print (){
+        System.out.println("Animal: " + species);
         System.out.println("Maximum longevity: "+ lifespan + "in years.");
         System.out.println("Maximum weight: "+ weight + "in kgs.");
     }
 }
 class Aquatic extends Animal {
     boolean scale;
-    Aquatic (long years , float kg , boolean skin){
-        super(years, kg);      //Super class Constructor
+    Aquatic (String species,long years , float kg , boolean skin){
+        super(species,years, kg);      //Super class Constructor
         scale = skin;
     }
     public void print(){
@@ -108,22 +129,22 @@ class Aquatic extends Animal {
 }
 class Land extends Animal {
     short vision;
-    Land (long years , float kg , short vision){
-        super(years , kg);
+    Land (String species,long years , float kg , short vision){
+        super(species,years , kg);
         this.vision =  vision;
     }
 }
 class Pet extends Land {
     String name;
-    Pet(long years, float kg, short vision, String name){
-        super(years, kg, vision);
+    Pet(String species,long years, float kg, short vision, String name){
+        super(species,years, kg, vision);
         this.name= name;
     }
 }
 class Wild extends Land{
  float speed;
- Wild (long years , float kg, short vision, float speed){
-    super(years, kg, vision);
+ Wild (String species,long years , float kg, short vision, float speed){
+    super(species,years, kg, vision);
     this.speed = speed ;
  }
 }
