@@ -65,6 +65,21 @@ public class BoundedWildcard {
         Aquatic q [] = { whale , shark};
         AnimalWorld <Aquatic> qList =  new AnimalWorld<Aquatic>( q);
         // Create a list of land animals
+        Land owl = new Land(3, 1, (short) 0);
+        Land l  [] = { owl };
+        AnimalWorld <Land> lList = new AnimalWorld<Land>(l);
+        // Create a list of pet animals
+        Pet dog = new Pet(12, 52, (short) 2, "Tusky");
+        Pet p [] = { dog };
+        AnimalWorld <Pet> pList = new AnimalWorld<Pet>(p);
+        // Create a list of wild animals
+        Wild cheetah = new Wild(15, 75, (short)4, 125);
+        Wild  deer = new Wild(10, 48, (short) 1, 86);
+        Wild w [] = { cheetah , deer };
+        AnimalWorld<Wild> wList = new AnimalWorld<Wild>(w);
+        //
+        InnerBoundedWildcard.showLand(lList);
+
 
     }
 }
@@ -120,7 +135,7 @@ class AnimalWorld <T extends Animal>{
 }
 class InnerBoundedWildcard {
     // Case 1 :  Unbound wildcard : Any object can be passed as its argument.
-    static void vitality (AnimalWorld <?> animals){
+     static void vitality (AnimalWorld <?> animals){
         for (Animal a : animals.listOfAnimals)
         a.print();
         System.out.println ();
@@ -139,7 +154,7 @@ class InnerBoundedWildcard {
         for (int i = 0 ; i < animals.listOfAnimals.length ; i++){
             animals.listOfAnimals[i]. print();
              // Call the method defined in Animal class
-             System.out.println("Vision: " + animals.listOfAnimals[i].vision)
+             System.out.println("Vision: " + animals.listOfAnimals[i].vision);
         }
         System.out.println();
      }
