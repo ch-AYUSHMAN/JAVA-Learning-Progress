@@ -23,7 +23,7 @@ public class TwoSum1 {
         }else {
             System.out.println("No two numbers found that add up to the Target.");
         }
-        
+        scanner.close();
     }
     
 }
